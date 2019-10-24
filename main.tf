@@ -77,5 +77,4 @@ user = "azureuser"
 port = "22"
 agent = false
 }
-}
 
