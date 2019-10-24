@@ -57,7 +57,7 @@ create_option = "FromImage"
 provisioner "remote-exec" {
     inline = [
       "puppet apply",
-      "consul join ${azure_instance.web.private_ip}",
+      "consul join ${azurerm_instance.web.private_ip}",
     ]
   }
 }
