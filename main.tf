@@ -53,6 +53,13 @@ storage_os_disk {
 name = "SafewayDisk"
 caching = "ReadWrite"
 create_option = "FromImage"
+
+provisioner "remote-exec" {
+    inline = [
+      "puppet apply",
+      "consul join ${azure_instance.web.private_ip}",
+    ]
+  }
 }
 storage_image_reference {
 publisher = "OpenLogic"
