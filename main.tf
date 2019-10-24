@@ -76,11 +76,10 @@ user = "azureuser"
 port = "22"
 agent = false
 }
-}
 provisioner "remote-exec" {
     inline = [
       "puppet apply",
       "consul join ${azurerm_instance.testvm.private_ip}",
     ]
   }
-
+}
