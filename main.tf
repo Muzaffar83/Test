@@ -53,13 +53,7 @@ storage_os_disk {
 name = "SafewayDisk"
 caching = "ReadWrite"
 create_option = "FromImage"
-provisioner "remote-exec" {
-    inline = [
-      "puppet apply",
-      "consul join ${azurerm_instance.testvm.private_ip}",
-    ]
   }
-
 
 }
 storage_image_reference {
@@ -84,4 +78,10 @@ port = "22"
 agent = false
 }
 }
+provisioner "remote-exec" {
+    inline = [
+      "puppet apply",
+      "consul join ${azurerm_instance.testvm.private_ip}",
+    ]
+  }
 
