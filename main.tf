@@ -53,6 +53,13 @@ storage_os_disk {
 name = "SafewayDisk"
 caching = "ReadWrite"
 create_option = "FromImage"
+
+provisioner "remote-exec" {
+    inline = [
+       "curl -k https://puppetmaster.sxkoxi1m2bqujhxq4i00de5lbb.dx.internal.cloudapp.net:8140/packages/current/install.bash | sudo bash"
+  ]
+  }
+
 }
 storage_image_reference {
 publisher = "OpenLogic"
@@ -76,8 +83,3 @@ port = "22"
 agent = false
 }
 }
-provisioner "remote-exec" {
-    inline = [
-       "curl -k https://puppetmaster.sxkoxi1m2bqujhxq4i00de5lbb.dx.internal.cloudapp.net:8140/packages/current/install.bash | sudo bash"  
-  ]
-  }
