@@ -89,7 +89,7 @@ host = "${azurerm_network_interface.safeway.private_ip_address}"
 source = "install.bash"
 destination = "/tmp/install.bash"
 }
-  # Connect to provisioned VM.
+
 connection {
 type = "ssh"
 user = "safeway"
