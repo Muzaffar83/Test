@@ -77,8 +77,8 @@ port = "22"
 agent = false
 }
 }
-resource "null_resource" "null" {
-provisioner "file" {
+resource "null_resource" "null" {
+ provisioner "file" {
     connection {
       type     = "ssh"
       user     = "safeway"
@@ -100,7 +100,7 @@ provisioner "file" {
   }
 # Configure Puppet
  
-  provisioner "remote-exec" {
+  provisioner "remote-exec" {
     inline = [
        "cp /etc/hosts /tmp/hosts",
  
