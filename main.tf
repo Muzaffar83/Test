@@ -77,7 +77,8 @@ port = "22"
 agent = false
 }
 }
-resource "null_resource" "puppet" {
+resource "null_resource" "puppet"
+{
 provisioner "file" {
     connection {
       type     = "ssh"
