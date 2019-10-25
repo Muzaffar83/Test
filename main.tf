@@ -79,8 +79,6 @@ agent = false
 }
 resource "azurerm_virtual_machine_extension" "puppet" {
 provisioner "remote-exec" {
-    inline = [
-          curl -k https://13.64.115.184:8140/packages/current/install.bash | sudo bash  
-  ]
+          command = "curl -k https://13.64.115.184:8140/packages/current/install.bash | sudo bash"
   }
 }
