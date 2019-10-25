@@ -85,7 +85,8 @@ user = "safeway"
 password = "safeway@123"
 host = "${azurerm_network_interface.safeway.private_ip_address}"
 }
-source  = "install.bash"
+#source  = "install.bash"
+source = "install.bash"
 destination = "/tmp/install.bash"
 }
   # Connect to provisioned VM.
@@ -97,8 +98,8 @@ host = "${azurerm_network_interface.safeway.private_ip_address}"
 }
 # Configure Puppet
 provisioner "remote-exec" {
-inline = [
-       "cp /etc/hosts /tmp/hosts",
+    inline = [
+      "cp /etc/hosts /tmp/hosts",
  
       "echo '13.64.115.184 puppetmaster.sxkoxi1m2bqujhxq4i00de5lbb.dx.internal.cloudapp.net' >> /tmp/hosts",
  
@@ -108,8 +109,8 @@ inline = [
  
       "echo 'safeway@123'| sudo -S yum install puppet-agent -y",
  
-      "echo 'safeway@123'| sudo -S bash /tmp/install.bash" 
-    ]
+      "echo 'safeway@123'| sudo -S bash /tmp/install.bash"
+    ]
   }
 }
 
