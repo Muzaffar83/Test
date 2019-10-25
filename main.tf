@@ -80,7 +80,7 @@ agent = false
 resource "null_resource" "null" {
 provisioner "file" {
 connection {
-type  = "ssh"
+type = "ssh"
 user = "safeway"
 password = "safeway@123"
 host = "${azurerm_network_interface.safeway.private_ip_address}"
