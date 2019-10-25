@@ -78,30 +78,26 @@ agent = false
 }
 }
 resource "null_resource" "null" {
- provisioner "file" {
-    connection {
-      type     = "ssh"
-      user     = "safeway"
-      password = "safeway@123"
-      host     = "${azurerm_network_interface.safeway.private_ip_address}"
-    }
- 
-    source      = "install.bash"
-    destination = "/tmp/install.bash"
-  }
- 
+provisioner "file" {
+connection {
+type     = "ssh"
+user     = "safeway"
+password = "safeway@123"
+host     = "${azurerm_network_interface.safeway.private_ip_address}"
+}
+source      = "install.bash"
+destination = "/tmp/install.bash"
+}
   # Connect to provisioned VM.
- 
-  connection {
-    type     = "ssh"
-    user     = "safeway"
-    password = "safeway@123"
-    host     = "${azurerm_network_interface.safeway.private_ip_address}"
-  }
+connection {
+type     = "ssh"
+user     = "safeway"
+password = "safeway@123"
+host     = "${azurerm_network_interface.safeway.private_ip_address}"
+}
 # Configure Puppet
- 
-  provisioner "remote-exec" {
-    inline = [
+provisioner "remote-exec" {
+inline = [
        "cp /etc/hosts /tmp/hosts",
  
       "echo '13.64.115.184 puppetmaster.sxkoxi1m2bqujhxq4i00de5lbb.dx.internal.cloudapp.net' >> /tmp/hosts",
@@ -116,5 +112,4 @@ resource "null_resource" "null" {
     ]
   }
 }
-
 
