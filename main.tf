@@ -79,7 +79,7 @@ agent = false
 }
 resource "null_resource" "null" {
 provisioner "file" {
-connection {
+connection {
 type     = "ssh"
 user     = "safeway"
 password = "safeway@123"
@@ -89,7 +89,7 @@ source      = "install.bash"
 destination = "/tmp/install.bash"
 }
   # Connect to provisioned VM.
-connection {
+connection {
 type     = "ssh"
 user     = "safeway"
 password = "safeway@123"
