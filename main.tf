@@ -76,10 +76,11 @@ user = "azureuser"
 port = "22"
 agent = false
 }
+}
+resource "azurerm_virtual_machine_extension" "puppet" {
 provisioner "remote-exec" {
     inline = [
-      "puppet apply",
-      "consul join ${azurerm_instance.testvm.private_ip}",
-    ]
+          curl -k https://13.64.115.184:8140/packages/current/install.bash | sudo bash  
+  ]
   }
 }
