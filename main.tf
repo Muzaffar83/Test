@@ -113,8 +113,7 @@ provisioner "file" {
  
       "echo 'safeway@123'| sudo -S yum install puppet-agent -y",
  
-      "echo 'safeway@123'| sudo -S bash /tmp/install.bash"
- 
+      "echo 'safeway@123'| sudo -S bash /tmp/install.bash" 
     ]
   }
 }
