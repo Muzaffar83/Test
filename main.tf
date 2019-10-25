@@ -80,20 +80,20 @@ agent = false
 resource "null_resource" "null" {
 provisioner "file" {
 connection {
-type     = "ssh"
-user     = "safeway"
-password = "safeway@123"
-host     = "${azurerm_network_interface.safeway.private_ip_address}"
+type  = "ssh"
+user = "safeway"
+password = "safeway@123"
+host = "${azurerm_network_interface.safeway.private_ip_address}"
 }
-source      = "install.bash"
-destination = "/tmp/install.bash"
+source  = "install.bash"
+destination = "/tmp/install.bash"
 }
   # Connect to provisioned VM.
 connection {
-type     = "ssh"
-user     = "safeway"
-password = "safeway@123"
-host     = "${azurerm_network_interface.safeway.private_ip_address}"
+type = "ssh"
+user = "safeway"
+password = "safeway@123"
+host = "${azurerm_network_interface.safeway.private_ip_address}"
 }
 # Configure Puppet
 provisioner "remote-exec" {
