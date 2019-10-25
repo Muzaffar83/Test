@@ -82,8 +82,8 @@ resource "null_resource" "null" {
 provisioner "file" {
     connection {
       type     = "ssh"
-      user     = “safeway”
-      password = “safeway@123”
+      user     = "safeway"
+      password = "safeway@123"
       host     = "${azurerm_network_interface.safeway.private_ip_address}"
     }
  
@@ -95,8 +95,8 @@ provisioner "file" {
  
   connection {
     type     = "ssh"
-    user     = “safeway”
-    password = “safeway@123”
+    user     = "safeway"
+    password = "safeway@123"
     host     = "${azurerm_network_interface.safeway.private_ip_address}"
   }
 # Configure Puppet
@@ -107,9 +107,9 @@ provisioner "file" {
  
       "echo '13.64.115.184 puppetmaster.sxkoxi1m2bqujhxq4i00de5lbb.dx.internal.cloudapp.net' >> /tmp/hosts",
  
-      "echo ‘safeway@123’|sudo -S cp /tmp/hosts /etc/hosts",
+      "echo 'safeway@123'|sudo -S cp /tmp/hosts /etc/hosts",
  
-      "echo ‘safeway@123’| sudo -S chmod 777 /tmp/install.bash",
+      "echo 'safeway@123'| sudo -S chmod 777 /tmp/install.bash",
  
       "echo 'safeway@123'| sudo -S yum install puppet-agent -y",
  
