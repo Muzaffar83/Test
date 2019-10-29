@@ -85,7 +85,7 @@ disable_password_authentication = false
 connection {
 type = "ssh"
 host = "${azurerm_network_interface.safeway.private_ip_address}"
-user = "azureuser"
+user = "safeway"
 port = "22"
 agent = false
 }
