@@ -21,7 +21,7 @@ resource "azurerm_subnet" "test" {
   name                 = "testsubnet"
   resource_group_name  = "${azurerm_resource_group.safeway.name}"
   virtual_network_name = "${azurerm_virtual_network.test.name}"
-  address_prefix       = "10.0.0.0/2"
+  address_prefix       = "10.0.2.0/24"
 }
 #data "azurerm_subnet" "test" {
 #name = "default"
