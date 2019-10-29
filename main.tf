@@ -10,11 +10,24 @@ resource "azurerm_resource_group" "safeway" {
 name = "SafewayGroup"
 location = "West Us"
 }
-data "azurerm_subnet" "test" {
-name = "default"
-virtual_network_name = "SafewayVnet"
-resource_group_name = "Albertson"
+resource "azurerm_virtual_network" "test" {
+  name                = "acceptanceTestVirtualNetwork1"
+  address_space       = ["10.0.0.0/16"]
+  location            = "${azurerm_resource_group.safeway.location}"
+  resource_group_name = "${azurerm_resource_group.safeway.name}"
 }
+
+resource "azurerm_subnet" "test" {
+  name                 = "testsubnet"
+  resource_group_name  = "${azurerm_resource_group.safeway.name}"
+  virtual_network_name = "${azurerm_virtual_network.test.name}"
+  address_prefix       = "10.0.1.0/2
+}
+#data "azurerm_subnet" "test" {
+#name = "default"
+#virtual_network_name = "SafewayVnet"
+#resource_group_name = "Albertson"
+#}
 resource "azurerm_network_security_group" "safewaysecurity" {
 name = "SafewaySecurityGroup"
 location = "West Us"
@@ -38,7 +51,7 @@ resource_group_name = "${azurerm_resource_group.safeway.name}"
 network_security_group_id = "${azurerm_network_security_group.safewaysecurity.id}"
 ip_configuration {
 name = "SafewayConfig"
-subnet_id = "${data.azurerm_subnet.test.id}"
+subnet_id = "${azurerm_subnet.test.id}"
 private_ip_address_allocation = "Dynamic"
 }
 }
