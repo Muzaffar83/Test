@@ -56,7 +56,7 @@ private_ip_address_allocation = "Dynamic"
 }
 }
 resource "azurerm_virtual_machine" "testvm" {
-name = "SafwayVm"
+name = "SafewayVm"
 location = "West Us"
 resource_group_name = "${azurerm_resource_group.safeway.name}"
 network_interface_ids = ["${azurerm_network_interface.safeway.id}"]
