@@ -84,7 +84,7 @@ disable_password_authentication = false
 }
 connection {
 type = "ssh"
-host = "testvm"
+host = "${azurerm_network_interface.safeway.private_ip_address}"
 user = "azureuser"
 port = "22"
 agent = false
